@@ -1,3 +1,5 @@
+ZSH_DISABLE_COMPFIX=true # prevents insecure plugin folder warnings with oh-my-zsh
+
 export ZSH="/home/kevin/.oh-my-zsh"
 export LS_COLORS="$LS_COLORS:ow=1;33:tw=1;33:" # adjusts folder colors in 'ls'
 

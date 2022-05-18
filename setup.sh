@@ -41,7 +41,7 @@ sudo apt install zsh -y
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm ~/.oh-my-zsh/.git -r -f
-cp ./calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
+cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
 
 echo "----- installing zsh auto suggestions ------"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
@@ -70,7 +70,6 @@ npm install -g eslint
 
 cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
 cp ~/wsl-ubuntu-setup/.zshrc ~/.zshrc
-cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
 
 echo "----- finished ------"
 read -p "press any key to exit"
