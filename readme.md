@@ -1,4 +1,4 @@
-# WSL Ubuntu 20.04 Setup
+## WSL Ubuntu 20.04 Setup
 
 This script will completely configure Ubuntu in [WSL](https://docs.microsoft.com/en-us/windows/wsl/). It has only been tested on version 20.04!
 
