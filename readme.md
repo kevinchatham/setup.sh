@@ -4,7 +4,7 @@ This script will completely configure Ubuntu in [WSL](https://docs.microsoft.com
 
 ### Instructions
 
-From Ubuntu, just clone and run `setup.sh`
+From Ubuntu, just clone and run `setup.sh`. Then connect to the instance using the [VS Code WSL Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).
 
 ```bash
 cd ~
@@ -15,7 +15,7 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 
 - You will be prompted to configure `zsh`. Use the default options and `exit` when dropped into the new shell. Everything should continue normally after that.
 
-- It is a good idea to restart the shell when everything has finished installing.
+- Before launching VS Code, it is a good idea to close the shell when script is finished.
 
 ### Resetting Ubuntu
 
