@@ -18,12 +18,12 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 Ubuntu WSL can be reset with one of these commands.
 
 For WSL v1: 
-```powershell
+```batch
 wslconfig /unregister Ubuntu && ubuntu
 ```
 
 For WSL v2: 
-```powershell
+```batch
 wsl --unregister Ubuntu && ubuntu
 ```
 
