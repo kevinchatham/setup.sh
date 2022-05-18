@@ -8,7 +8,7 @@ From Ubuntu, just clone and run `setup.sh`
 
 ```bash
 cd ~
-git clone https://github.com/kevinchatham/wsl-ubuntu-setup
+git clone https://github.com/kevinchatham/wsl-ubuntu-setup.git
 chmod +x ~/wsl-ubuntu-setup/setup.sh
 ~/wsl-ubuntu-setup/setup.sh
 ```
