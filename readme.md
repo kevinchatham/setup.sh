@@ -15,7 +15,7 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 
 - After normal system updates you will be prompted to configure `zsh`. Use the default options and `exit` when dropped into the new shell. Everything should continue normally after that.
 
-- Before launching VS Code, it is a good idea to close the shell when script is finished.
+- Before launching VS Code, it is a good idea to close the shell after the script finishes.
 
 ### Resetting Ubuntu
 
