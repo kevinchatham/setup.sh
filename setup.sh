@@ -1,12 +1,5 @@
 #!/bin/bash
 
-sudo add-apt-repository universe
-sudo apt update && sudo apt upgrade -y
-
-echo "----- configuring git ------"
-git config --global user.name kevinchatham
-git config --global user.email 40923272+kevinchatham@users.noreply.github.com
-
 echo "----- installing zsh ------"
 sudo apt install zsh -y
 
@@ -20,6 +13,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plug
 
 echo "----- installing zsh syntax highlighting ------"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+
+echo "----- system updates ------"
+sudo add-apt-repository universe
+sudo apt update && sudo apt upgrade -y
+
+echo "----- configuring git ------"
+git config --global user.name kevinchatham
+git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
@@ -61,6 +62,9 @@ cd ~/wsl-ubuntu-setup
 
 echo "----- installing node 16.15.0 ------"
 nvm install 16.15.0
+
+echo "----- installing npm latest ------"
+npm install -g npm
 
 echo "----- installing angular cli ------"
 npm install -g @angular/cli
