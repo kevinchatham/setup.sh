@@ -50,8 +50,8 @@ echo "----- installing zsh syntax highlighting ------"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 echo "----- installing nvm (node version manager) ------"
-rm -rf ~/.nvm
 export NVM_DIR="$HOME/.nvm"
+rm -rf ~/.nvm
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
 cd "$NVM_DIR"
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
@@ -66,3 +66,8 @@ npm install -g @angular/cli
 cp ./.bashrc ~/.bashrc
 cp ./.zshrc ~/.zshrc
 cp ./calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
+
+echo "----- finished ------"
+read -p "It is neccessary to restart this session. Press any key to exit..."
+clear
+exit

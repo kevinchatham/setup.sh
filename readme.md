@@ -10,7 +10,7 @@ Just clone and run `setup.sh`
 cd ~
 git clone https://github.com/kevinchatham/wsl-ubuntu-setup
 chmod +x ~/wsl-ubuntu-setup/setup.sh
-sh ~/wsl-ubuntu-setup/setup.sh
+~/wsl-ubuntu-setup/setup.sh
 ```
 
 ### Reset
