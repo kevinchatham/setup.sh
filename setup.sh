@@ -5,7 +5,7 @@ sudo apt update && sudo apt upgrade -y
 
 echo "----- configuring git ------"
 git config --global user.name kevinchatham
-git config --global user.email 40923272+kevinchatham@users.noreply.github.com 
+git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 
 echo "----- installing zsh ------"
 sudo apt install zsh -y
