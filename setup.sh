@@ -54,20 +54,24 @@ export NVM_DIR="$HOME/.nvm"
 rm -rf ~/.nvm
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
 cd "$NVM_DIR"
-git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-sh $NVM_DIR/nvm.sh
-source ~/.profile 
-cd "$(dirname "$0")"
+git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)` | bash
+. "$NVM_DIR/nvm.sh"
+. ./nvm.sh
+cd ~/wsl-ubuntu-setup
+
+echo "----- installing node 16.15.0 ------"
 nvm install 16.15.0
 
 echo "----- installing angular cli ------"
 npm install -g @angular/cli
 
-cp ./.bashrc ~/.bashrc
-cp ./.zshrc ~/.zshrc
-cp ./calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
+echo "----- installing eslint ------"
+npm install -g eslint
+
+cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
+cp ~/wsl-ubuntu-setup/.zshrc ~/.zshrc
+cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
 
 echo "----- finished ------"
-read -p "It is neccessary to restart this session. Press any key to exit..."
+read -p "press any key to exit"
 clear
-exit
