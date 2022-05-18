@@ -12,7 +12,7 @@ sudo apt install zsh -y
 
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm ~/.oh-my-zsh/.git -r -f
+rm  -rf ~/.oh-my-zsh/.git
 cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
 
 echo "----- installing zsh auto suggestions ------"
