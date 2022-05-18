@@ -10,7 +10,7 @@ git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 echo "----- installing nvm (node version manager) ------"
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 source ~/.profile   
-nvm install node 16.15.0
+nvm install 16.15.0
 
 echo "----- installing angular cli ------"
 npm install -g @angular/cli
@@ -42,9 +42,6 @@ sudo apt install sqlite3 -y
 
 echo "----- installing zsh ------"
 sudo apt install zsh -y
-
-echo "----- installing autojump ------"
-sudo apt install autojump -y
 
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
