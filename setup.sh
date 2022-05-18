@@ -68,7 +68,11 @@ npm install -g @angular/cli
 echo "----- installing eslint ------"
 npm install -g eslint
 
+echo "----- installing profiles ------"
 cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
 cp ~/wsl-ubuntu-setup/.zshrc ~/.zshrc
+
+echo "----- cleaning up ------"
+sudo apt autoremove -y
 
 echo "----- finished ------"
