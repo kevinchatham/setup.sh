@@ -27,7 +27,7 @@ For WSL v2:
 wsl --unregister Ubuntu | Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing | Add-AppxPackage .\Ubuntu2004.appx
 ```
 
-### Install WSL Without Microsoft Store
+### Install Ubuntu WSL Without Microsoft Store
 
 If you do not have access to the Microsoft Store to install Ubuntu WSL, don't worry, it can be manually installed. Please see [this documentation](https://docs.microsoft.com/en-us/windows/wsl/install-manual) (at Downloading Distributions) for more details. Note that you will need to install WSL first.
 
