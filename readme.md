@@ -15,7 +15,7 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 
 - You will be prompted to configure `zsh`. Use the default options and `exit` when dropped into the new shell. Everything should continue normally after that.
 
-- It is a good idea to restart the shell when everything has finished installing. It is normal for this to take some time.
+- It is a good idea to restart the shell when everything has finished installing.
 
 ### Resetting Ubuntu
 
