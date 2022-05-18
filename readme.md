@@ -13,9 +13,9 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 ~/wsl-ubuntu-setup/setup.sh
 ```
 
-### Resetting WSL
+### Resetting Ubuntu WSL
 
-The current WSL environment can be reset with one of these powershell commands.
+Ubuntu WSL can be reset with one of these powershell commands.
 
 For WSL v1: 
 ```powershell
