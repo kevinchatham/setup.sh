@@ -15,16 +15,16 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 
 ### Resetting Ubuntu WSL
 
-Ubuntu WSL can be reset with one of these powershell commands.
+Ubuntu WSL can be reset with one of these commands.
 
 For WSL v1: 
 ```powershell
-wslconfig /unregister Ubuntu | ubuntu
+wslconfig /unregister Ubuntu && ubuntu
 ```
 
 For WSL v2: 
 ```powershell
-wsl --unregister Ubuntu | ubuntu
+wsl --unregister Ubuntu && ubuntu
 ```
 
 ### Install Ubuntu WSL Without Microsoft Store
