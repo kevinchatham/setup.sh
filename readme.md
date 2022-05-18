@@ -19,12 +19,12 @@ Ubuntu WSL can be reset with one of these powershell commands.
 
 For WSL v1: 
 ```powershell
-wslconfig /unregister Ubuntu | Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing | Add-AppxPackage .\Ubuntu2004.appx
+wslconfig /unregister Ubuntu | ubuntu
 ```
 
 For WSL v2: 
 ```powershell
-wsl --unregister Ubuntu | Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing | Add-AppxPackage .\Ubuntu2004.appx
+wsl --unregister Ubuntu | ubuntu
 ```
 
 ### Install Ubuntu WSL Without Microsoft Store
@@ -33,5 +33,5 @@ If you do not have access to the Microsoft Store, don't worry, Ubuntu WSL can be
 
 Manually Install Ubuntu 20.04:
 ```powershell
-Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu2004.appx -UseBasicParsing | Add-AppxPackage .\Ubuntu2004.appx
+Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing | Add-AppxPackage .\Ubuntu.appx
 ```
