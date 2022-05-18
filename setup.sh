@@ -7,6 +7,20 @@ echo "----- configuring git ------"
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com 
 
+echo "----- installing zsh ------"
+sudo apt install zsh -y
+
+echo "----- installing oh my zsh ------"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm ~/.oh-my-zsh/.git -r -f
+cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
+
+echo "----- installing zsh auto suggestions ------"
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+echo "----- installing zsh syntax highlighting ------"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
 
@@ -34,20 +48,6 @@ rm ~/terraform_${TER_VER}_linux_amd64.zip
 
 echo "----- installing sqlite ------"
 sudo apt install sqlite3 -y
-
-echo "----- installing zsh ------"
-sudo apt install zsh -y
-
-echo "----- installing oh my zsh ------"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm ~/.oh-my-zsh/.git -r -f
-cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
-
-echo "----- installing zsh auto suggestions ------"
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
-
-echo "----- installing zsh syntax highlighting ------"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 echo "----- installing nvm (node version manager) ------"
 export NVM_DIR="$HOME/.nvm"
