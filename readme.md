@@ -13,6 +13,9 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 ~/wsl-ubuntu-setup/setup.sh
 ```
 
+##### Note
+You will be prompted to configure `zsh`. Use the default options and `exit` when dropped into the new shell. Everything should continue normally after that.
+
 ### Resetting Ubuntu
 
 Ubuntu can be reset with one of these commands.
