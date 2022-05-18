@@ -72,5 +72,3 @@ cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
 cp ~/wsl-ubuntu-setup/.zshrc ~/.zshrc
 
 echo "----- finished ------"
-read -p "press any key to exit"
-clear
