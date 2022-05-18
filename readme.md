@@ -1,6 +1,6 @@
 # WSL Ubuntu 20.04 Setup
 
-This script will completely configure Ubuntu 20.04 in [WSL](https://docs.microsoft.com/en-us/windows/wsl/). It has only been tested on Ubuntu 20.04!
+This script will completely configure Ubuntu in [WSL](https://docs.microsoft.com/en-us/windows/wsl/). It has only been tested on version 20.04!
 
 ### Instructions
 
