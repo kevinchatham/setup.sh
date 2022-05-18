@@ -7,13 +7,8 @@ echo "----- configuring git ------"
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com 
 
-echo "----- installing nvm (node version manager) ------"
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-source ~/.profile   
-nvm install 16.15.0
-
-echo "----- installing angular cli ------"
-npm install -g @angular/cli
+echo "----- installing neofetch ------"
+sudo apt install neofetch -y
 
 echo "----- installing fira code ------"
 sudo apt install fonts-firacode -y
@@ -48,11 +43,25 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 rm ~/.oh-my-zsh/.git -r -f
 cp ./calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
 
-echo "----- cloning zsh auto suggestions ------"
+echo "----- installing zsh auto suggestions ------"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
 
-echo "----- cloning zsh syntax highlighting ------"
+echo "----- installing zsh syntax highlighting ------"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+
+echo "----- installing nvm (node version manager) ------"
+rm -rf ~/.nvm
+export NVM_DIR="$HOME/.nvm"
+git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+cd "$NVM_DIR"
+git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+sh $NVM_DIR/nvm.sh
+source ~/.profile 
+cd "$(dirname "$0")"
+nvm install 16.15.0
+
+echo "----- installing angular cli ------"
+npm install -g @angular/cli
 
 cp ./.bashrc ~/.bashrc
 cp ./.zshrc ~/.zshrc
