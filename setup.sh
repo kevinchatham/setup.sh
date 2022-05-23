@@ -61,6 +61,9 @@ git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --
 . ./nvm.sh
 cd ~/wsl-ubuntu-setup
 
+echo "----- allowing legacy dependencies ------"
+npm config set legacy-peer-deps true
+
 echo "----- installing node 16.15.0 ------"
 nvm install 16.15.0
 
