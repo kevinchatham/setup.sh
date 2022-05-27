@@ -3,6 +3,10 @@ ZSH_DISABLE_COMPFIX=true # prevents insecure plugin folder warnings with oh-my-z
 export ZSH="/home/kevin/.oh-my-zsh"
 export LS_COLORS="$LS_COLORS:ow=1;33:tw=1;33:" # adjusts folder colors in 'ls'
 
+export PATH="/snap/bin:$PATH"
+
+export PATH=/opt/apache-maven-3.8.4/bin:${PATH}
+
 lazynvm() {
   unset -f nvm node npm
   export NVM_DIR=~/.nvm
@@ -86,8 +90,6 @@ ZSH_HIGHLIGHT_STYLES[alias]=fg=blue
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=blue
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
 ZSH_HIGHLIGHT_STYLES[path]=none
-
-export PATH="/snap/bin:$PATH"
 
 alias desktop="ssh kevin@desktop.local"
 alias laptop="ssh kevin@laptop.local"

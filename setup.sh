@@ -51,6 +51,18 @@ rm ~/terraform_${TER_VER}_linux_amd64.zip
 echo "----- installing sqlite ------"
 sudo apt install sqlite3 -y
 
+echo "----- installing open jdk 11 ------"
+sudo apt-get install openjdk-11-jdk
+
+echo "----- installing maven 3.8.4 ------"
+# https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/#installing-the-latest-release-of-apache-maven
+wget https://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt 
+sudo ln -s /opt/apache-maven-3.8.4 /opt/maven # sym link When a new version is released, you can upgrade your Maven installation, by unpacking the newer version and change the symlink to point to it.
+sudo cp ./maven.sh /etc/profile.d/
+sudo chmod +x /etc/profile.d/maven.sh
+. /etc/profile.d/maven.sh
+
 echo "----- installing nvm (node version manager) ------"
 export NVM_DIR="$HOME/.nvm"
 rm -rf ~/.nvm
