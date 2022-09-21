@@ -6,7 +6,6 @@ sudo apt install zsh -y
 
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm -rf ~/.oh-my-zsh/.git
 cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
 
 echo "----- installing zsh auto suggestions ------"
@@ -77,7 +76,7 @@ echo "----- allowing legacy dependencies ------"
 npm config set legacy-peer-deps true
 
 echo "----- installing node 16.15.0 ------"
-nvm install 16.15.0
+nvm install --lts
 
 echo "----- installing npm latest ------"
 npm install -g npm
@@ -87,12 +86,6 @@ npm install -g @angular/cli
 
 echo "----- installing eslint ------"
 npm install -g eslint
-
-echo "----- installing node terraform cdk ------"
-npm install -g cdktf-cli
-
-echo "----- installing yarn ------"
-npm install -g yarn
 
 echo "----- installing profiles ------"
 cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
