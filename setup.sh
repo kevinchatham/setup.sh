@@ -84,9 +84,6 @@ npm install -g npm
 echo "----- installing eslint ------"
 npm install -g eslint
 
-echo "----- installing node terraform cdk ------"
-npm install -g cdktf-cli
-
 echo "----- installing profiles ------"
 cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
 cp ~/wsl-ubuntu-setup/.zshrc ~/.zshrc
