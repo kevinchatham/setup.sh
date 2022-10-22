@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "----- installing neovim ------"
 sudo add-apt-repository ppa:neovim-ppa/unstable
