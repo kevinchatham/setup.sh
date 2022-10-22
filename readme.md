@@ -21,12 +21,12 @@ chmod +x ~/wsl-ubuntu-setup/setup.sh
 
 Ubuntu can be reset with one of these commands.
 
-For WSL v1: 
+For WSL v1:
 ```batch
 wslconfig /unregister Ubuntu && ubuntu
 ```
 
-For WSL v2: 
+For WSL v2:
 ```batch
 wsl --unregister Ubuntu && ubuntu
 ```
