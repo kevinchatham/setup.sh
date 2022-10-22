@@ -6,7 +6,7 @@ sudo apt install zsh -y
 
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme 
+cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
 
 echo "----- installing zsh auto suggestions ------"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade -y
 echo "----- installing neovim ------"
 sudo apt install neovim -y
 mkdir ~/.config/nvim
-cp init.lua ~/.config/nvim/init.lua
+cp nvim/init.lua ~/.config/nvim/init.lua
 
 echo "----- configuring git ------"
 git config --global user.name kevinchatham
@@ -62,7 +62,7 @@ sudo apt-get install openjdk-11-jdk
 echo "----- installing maven 3.8.4 ------"
 # https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/#installing-the-latest-release-of-apache-maven
 wget https://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz -P /tmp
-sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt 
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
 sudo ln -s /opt/apache-maven-3.8.4 /opt/maven # sym link When a new version is released, you can upgrade your Maven installation, by unpacking the newer version and change the symlink to point to it.
 sudo cp ./maven.sh /etc/profile.d/
 sudo chmod +x /etc/profile.d/maven.sh
