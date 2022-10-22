@@ -24,8 +24,8 @@ require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'                                                      -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim'                                            -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth'                                                               -- Detect tabstop and shiftwidth automatically
-  use 'mjlbach/onedark.nvim'  
-  use 'AhmedAbdulrahman/vim-aylin'  
+  use 'mjlbach/onedark.nvim'
+  use 'AhmedAbdulrahman/vim-aylin'
   use 'fratajczak/one-monokai-vim'                                                       -- Theme inspired by Atom
   use { "ellisonleao/gruvbox.nvim" }
 
@@ -65,6 +65,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Set colorscheme
+vim.o.termguicolors = true
+vim.o.background = "dark"
+vim.cmd([[colorscheme one-monokai]])
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -90,11 +95,6 @@ vim.o.smartcase = true
 -- Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
-
--- Set colorscheme
-vim.o.termguicolors = true
-vim.o.background = "dark" 
-vim.cmd([[colorscheme one-monokai]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
