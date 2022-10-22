@@ -25,6 +25,10 @@ git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
 
+echo "----- installing neovim ------"
+sudo apt install nvim -y
+cp init.lua ~/.config/nvim/init.lua
+
 echo "----- installing fira code ------"
 sudo apt install fonts-firacode -y
 
