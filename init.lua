@@ -8,15 +8,16 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'                                              -- Package manager
-  use 'tpope/vim-fugitive'                                                  -- Git commands in nvim
-  use 'tpope/vim-rhubarb'                                                   -- Fugitive-companion to interact with github
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
-  use 'numToStr/Comment.nvim'                                               -- "gc" to comment visual regions/lines
-  use 'nvim-treesitter/nvim-treesitter'                                     -- Highlight, edit, and navigate code
-  use 'nvim-lualine/lualine.nvim'                                           -- Fancier statusline
-  -- themes
-  use 'mjlbach/onedark.nvim'         -- onedark
+    use 'wbthomason/packer.nvim'                                              -- Package manager
+    use 'tpope/vim-fugitive'                                                  -- Git commands in nvim use 'tpope/vim-rhubarb'                                                   -- Fugitive-companion to interact with github
+    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
+    use 'numToStr/Comment.nvim'                                               -- "gc" to comment visual regions/lines
+    use 'nvim-treesitter/nvim-treesitter'                                     -- Highlight, edit, and navigate code
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+  -- themes use 'mjlbach/onedark.nvim'         -- onedark
   use 'AhmedAbdulrahman/vim-aylin'   -- aylin
   use 'fratajczak/one-monokai-vim'   -- one-monokai
   use { "ellisonleao/gruvbox.nvim" } -- gruvbox
@@ -43,6 +44,7 @@ end
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+
 vim.api.nvim_create_autocmd('BufWritePost', {
   command = 'source <afile> | PackerCompile',
   group = packer_group,
@@ -57,7 +59,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
-vim.opt.guicursor = ""
+vim.opt.guicursor = "i:blinkon100"
 
 -- Set colorscheme
 vim.o.termguicolors = true
@@ -97,11 +99,13 @@ vim.o.completeopt = 'menuone,noselect'
 -- Space as leader key
 vim.g.mapleader = ' '
 
--- somehow do 4 space as tabs ?
--- vim.opt.set.tabstop = 4
--- vim.opt.set.shiftwidth = 4
--- vim.opt.set.softtabstop = 4
--- vim.opt.set.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth =2
+vim.opt.expandtab = true
+vim.opt.hlsearch = true
+vim.opt.smartindent = true
+vim.opt.wrap = true
 
 local colors = {
   blue   = '#79a0ff',
@@ -134,20 +138,15 @@ local calm_theme = {
 require('lualine').setup {
   options = {
     theme = calm_theme,
-    component_separators = '|',
+    component_separators = '|:',
   },
   sections = {
+    lualine_a = {},
     lualine_b = { 'filename', 'branch' },
     lualine_c = { 'fileformat' },
-    lualine_y = { 'filetype', 'progress' },
-  },
-  inactive_sections = {
-    lualine_a = { 'filename' },
-    lualine_b = {},
-    lualine_c = {},
     lualine_x = {},
-    lualine_y = {},
-    lualine_z = { 'location' },
+    lualine_y = { 'filetype', 'progress' },
+    lualine_z = {}
   },
   tabline = {},
   extensions = {},
@@ -230,7 +229,6 @@ require('nvim-treesitter.configs').setup {
     },
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         [']m'] = '@function.outer',
         [']]'] = '@class.outer',
