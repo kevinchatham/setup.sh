@@ -15,28 +15,22 @@ require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'                                               -- "gc" to comment visual regions/lines
   use 'nvim-treesitter/nvim-treesitter'                                     -- Highlight, edit, and navigate code
   use 'nvim-lualine/lualine.nvim'                                           -- Fancier statusline
-  use 'preservim/nerdtree'
   -- themes
   use 'mjlbach/onedark.nvim'         -- onedark
   use 'AhmedAbdulrahman/vim-aylin'   -- aylin
-  use 'fratajczak/one-monokai-vim'   -- one-monokai                                              
+  use 'fratajczak/one-monokai-vim'   -- one-monokai
   use { "ellisonleao/gruvbox.nvim" } -- gruvbox
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
-
   if is_bootstrap then
     require('packer').sync()
   end
 end)
--- stylua: ignore end
 
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
---
 -- You'll need to restart nvim, and then it will work.
 if is_bootstrap then
   print '=================================='
@@ -62,6 +56,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+vim.opt.guicursor = ""
 
 -- Set colorscheme
 vim.o.termguicolors = true
@@ -101,28 +97,23 @@ vim.o.completeopt = 'menuone,noselect'
 -- Space as leader key
 vim.g.mapleader = ' '
 
--- somehow do 4 space as tabs ? 
+-- somehow do 4 space as tabs ?
 -- vim.opt.set.tabstop = 4
 -- vim.opt.set.shiftwidth = 4
 -- vim.opt.set.softtabstop = 4
 -- vim.opt.set.expandtab = true
 
--- open nerdtree with space + n
-vim.api.nvim_set_keymap("n", "<leader>n", ":NERDTreeToggle<CR>", {noremap = true})
-
--- Set lualine as statusline
--- See `:help lualine.txt`
 local colors = {
-  blue   = '#80a0ff',
-  cyan   = '#79dac8',
-  black  = '#080808',
-  white  = '#c6c6c6',
-  red    = '#ff5189',
-  violet = '#d183e8',
-  grey   = '#303030',
+  blue   = '#79a0ff',
+  cyan   = '#78dac8',
+  black  = '#80807',
+  white  = '#c5c6c6',
+  red    = '#ff5188',
+  violet = '#d182e8',
+  grey   = '#303029',
 }
 
-local bubbles_theme = {
+local calm_theme = {
   normal = {
     a = { fg = colors.black, bg = colors.violet },
     b = { fg = colors.white, bg = colors.grey },
@@ -142,21 +133,13 @@ local bubbles_theme = {
 
 require('lualine').setup {
   options = {
-    theme = bubbles_theme,
+    theme = calm_theme,
     component_separators = '|',
-    section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = {
-      { 'mode', separator = { left = '' }, right_padding = 2 },
-    },
     lualine_b = { 'filename', 'branch' },
     lualine_c = { 'fileformat' },
-    lualine_x = {},
     lualine_y = { 'filetype', 'progress' },
-    lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
-    },
   },
   inactive_sections = {
     lualine_a = { 'filename' },
@@ -169,7 +152,6 @@ require('lualine').setup {
   tabline = {},
   extensions = {},
 }
-
 
 -- Enable Comment.nvim
 require('Comment').setup()
@@ -199,9 +181,6 @@ require('telescope').setup {
   },
 }
 
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
@@ -223,7 +202,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript' },
+  ensure_installed = { 'lua', 'typescript' },
 
   highlight = { enable = true },
   indent = { enable = true },

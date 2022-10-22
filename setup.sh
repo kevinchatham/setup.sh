@@ -16,7 +16,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 
 echo "----- system updates ------"
 sudo add-apt-repository universe
+sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update && sudo apt upgrade -y
+
+echo "----- installing neovim ------"
+sudo apt install neovim -y
+mkdir ~/.config/nvim
+cp init.lua ~/.config/nvim/init.lua
 
 echo "----- configuring git ------"
 git config --global user.name kevinchatham
