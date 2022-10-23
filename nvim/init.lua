@@ -106,6 +106,7 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
+vim.opt.noshowmode = true
 
 local colors = {
   black  = '#000000',
@@ -199,6 +200,7 @@ require('gitsigns').setup {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    file_ignore_patterns = { "node_modules/.*" },
     mappings = {
       i = {
         ['<C-u>'] = false,
