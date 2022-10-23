@@ -25,6 +25,8 @@ require('packer').startup(function(use)
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
+  use 'folke/tokyonight.nvim'
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -64,7 +66,7 @@ vim.opt.guicursor = "i:blinkon100"
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.cmd([[colorscheme one-monokai]])
+vim.cmd("colorscheme tokyonight-moon")
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -106,44 +108,51 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
-vim.opt.noshowmode = true
+
+vim.cmd "set noshowmode"
 
 local colors = {
-  black  = '#000000',
-  white  = '#ffffff',
+  black  = '#1A1D30',
+  white  = '#F5F6FA',
   darkGrey = '#656565',
-  grey = '#808782',
-  flame = '#808782',
-  yellow = '#FCBA04',
-  green = '#B0E298',
+  background = '#222436',
+  glaucous='#7880B5',
+  darkPurple='#262A45'
 }
 
-local calm_theme = {
+local tokyo_night_moon  = {
   normal = {
-    a = { fg = colors.white, bg = colors.darkGrey },
-    b = { fg = colors.white, bg = colors.flame },
-    c = { fg = colors.black, bg = colors.green },
+    a = { fg = colors.glaucous, bg = colors.black },
+    b = { fg = colors.glaucous, bg = colors.black },
+    c = { fg = colors.glaucous, bg = colors.background },
+    x = { fg = colors.glaucous, bg = colors.background },
+    y = { fg = colors.glaucous, bg = colors.background },
+    z = { fg = colors.glaucous, bg = colors.black },
   },
   insert = {
-    a = { fg = colors.black, bg = colors.white }
+    a = { fg = colors.white, bg = colors.glaucous },
+    z = { fg = colors.glaucous, bg = colors.black },
   },
   visual = {
-    a = { fg = colors.black, bg = colors.white }
+    a = { fg = colors.white, bg = colors.glaucous },
+    z = { fg = colors.glaucous, bg = colors.black },
   },
   replace = {
-    a = { fg = colors.black, bg = colors.white }
+    a = { fg = colors.white, bg = colors.glaucous },
+    z = { fg = colors.glaucous, bg = colors.black },
   },
   inactive = {
     a = { fg = colors.white, bg = colors.black },
     b = { fg = colors.white, bg = colors.black },
     c = { fg = colors.white, bg = colors.black },
+    z = { fg = colors.glaucous, bg = colors.black },
   },
 }
 
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = calm_theme,
+    theme = tokyo_night_moon,
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -161,17 +170,17 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_b = {'branch', 'diff', 'diagnostics', 'filename'},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'progress','location'}
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = {},
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
