@@ -1,6 +1,4 @@
-# calm.zsh-theme
-
-# borrowed from fino
+# tokyo-night.zsh-theme
 
 function virtualenv_prompt_info {
   [[ -n ${VIRTUAL_ENV} ]] || return
@@ -21,16 +19,13 @@ local git_info='$(git_prompt_info)'
 local virtualenv_info='$(virtualenv_prompt_info)'
 local prompt_char='$(prompt_char)'
 
-# translates to $USER @ $HOST
-# ${FG[105]}%n ${FG[242]}@ ${FG[103]}$(box_name)
-
-PROMPT="╭─ %B${FG[003]}%~%b${git_info}${ruby_env}${virtualenv_info}
+PROMPT="╭─ %B${FG[063]}%~%b${git_info}${ruby_env}${virtualenv_info}
 ╰─${prompt_char}%{$reset_color%} "
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" ${FG[242]}on%{$reset_color%} ${FG[004]}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" ${FG[242]}on%{$reset_color%} ${FG[069]}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="${FG[202]} ✘"
-ZSH_THEME_GIT_PROMPT_CLEAN="${FG[040]} ✔"
+ZSH_THEME_GIT_PROMPT_DIRTY="${FG[202]} :("
+ZSH_THEME_GIT_PROMPT_CLEAN="${FG[083]} :)"
 
 ZSH_THEME_RUBY_PROMPT_PREFIX=" ${FG[242]}using${FG[243]} ‹"
 ZSH_THEME_RUBY_PROMPT_SUFFIX="›%{$reset_color%}"
