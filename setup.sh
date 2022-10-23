@@ -27,6 +27,7 @@ cp nvim/init.lua ~/.config/nvim/init.lua
 echo "----- configuring git ------"
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
+git config --global credential.helper store
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
