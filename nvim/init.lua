@@ -17,6 +17,9 @@ require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+
+  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+
   -- themes
   use 'mjlbach/onedark.nvim'         -- onedark
   use 'AhmedAbdulrahman/vim-aylin'   -- aylin
@@ -48,7 +51,13 @@ end
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 
-vim.api.nvim_create_autocmd('BufWritePost', {
+require'lspconfig'.terraformls.setup{}
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = vim.lsp.buf.formatting_sync,
+})
+
+create_autocmd('BufWritePost', {
   command = 'source <afile> | PackerCompile',
   group = packer_group,
   pattern = vim.fn.expand '$MYVIMRC',
@@ -241,7 +250,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'typescript' },
+  ensure_installed = { 'lua', 'typescript', 'hcl' },
 
   highlight = { enable = true },
   indent = { enable = true },
