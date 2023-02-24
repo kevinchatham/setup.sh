@@ -36,3 +36,15 @@ alias zsh-themes="code ~/.oh-my-zsh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export JAVA_19_HOME=/usr/lib/jvm/java-19-openjdk-amd64/bin/
+export JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/
+export JAVA_11_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/
+export JAVA_8_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/
+
+alias java19="export JAVA_HOME=$JAVA_19_HOME"
+alias java17="export JAVA_HOME=$JAVA_17_HOME"
+alias java11="export JAVA_HOME=$JAVA_11_HOME"
+alias java8="export JAVA_HOME=$JAVA_8_HOME"
+
+java8 #set default

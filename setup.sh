@@ -58,7 +58,10 @@ echo "----- installing sqlite ------"
 sudo apt install sqlite3 -y
 
 echo "----- installing open jdk 11 ------"
+sudo apt-get install openjdk-8-jdk
 sudo apt-get install openjdk-11-jdk
+sudo apt-get install openjdk-17-jdk
+sudo apt-get install openjdk-19-jdk
 
 echo "----- installing maven 3.8.4 ------"
 # https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/#installing-the-latest-release-of-apache-maven
