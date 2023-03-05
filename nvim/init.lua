@@ -52,16 +52,17 @@ end
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 
 require'lspconfig'.terraformls.setup{}
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.formatting_sync,
-})
 
-create_autocmd('BufWritePost', {
-  command = 'source <afile> | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
-})
+-- DOESN'T WORK
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+--   pattern = {"*.tf", "*.tfvars"},
+--   callback = vim.lsp.buf.formatting_sync,
+-- })
+-- create_autocmd('BufWritePost', {
+--   command = 'source <afile> | PackerCompile',
+--   group = packer_group,
+--   pattern = vim.fn.expand '$MYVIMRC',
+-- })
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
@@ -74,6 +75,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.opt.guicursor = "i:blinkon100"
 
 -- Set colorscheme
+vim.cmd('au ColorScheme * hi Normal ctermbg=none guibg=none')
 vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.cmd("colorscheme tokyonight-moon")
@@ -117,7 +119,7 @@ vim.opt.shiftwidth =2
 vim.opt.expandtab = true
 vim.opt.hlsearch = true
 vim.opt.smartindent = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 vim.cmd "set noshowmode"
 
