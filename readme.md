@@ -1,6 +1,6 @@
 # Ubuntu Setup 
 
-This repository automates the setup of my Ubuntu Server / WSL dev environment on using Zsh. It installs all necessary dependencies and software packages, including Zsh plugins and command-line tools like Git, nVim plus config and theme, nvm, powershell, .net, fonts, zsh config and theme, terraform, etc. 
+This repository automates the setup of my Ubuntu Server / WSL dev environment on using Zsh. It installs all necessary dependencies and software packages, including Zsh plugins and command-line tools like Git, Nvim config and theme, NVM, PowerShell, .NET, Fira Code, Zsh config and theme, Terraform, AZ CLI, etc. 
 
 There are scripts for backing up and restoring configuration files, allowing for east migration of development environment when configuring a new system.
 
