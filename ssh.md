@@ -24,3 +24,9 @@ Add content of `laptop.pub` to authorized key file ( VM )
 ```
 sudo nano ~/.ssh/authorized_keys
 ```
+
+From there you can use `-i` with the private key file for password-less authentication.
+
+```
+ssh -i %USERPROFILE%\.ssh\laptop.rsa kevin@ubuntu
+```
