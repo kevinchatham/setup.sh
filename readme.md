@@ -1,10 +1,8 @@
-## WSL Ubuntu 20.04 Setup
-
-This script will completely configure Ubuntu in [WSL](https://docs.microsoft.com/en-us/windows/wsl/). It has only been tested on version 20.04!
+## Ubuntu Setup 
 
 ### Instructions
 
-From Ubuntu, just clone and run `setup.sh`. Then connect to the instance using the [VS Code WSL Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).
+Clone and run `setup.sh`
 
 ```bash
 cd ~
