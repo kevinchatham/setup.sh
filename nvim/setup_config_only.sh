@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-cp init.lua ~/.config/nvim/init.lua
+mkdir -p ~/.config/nvim
 
+cp init.lua ~/.config/nvim/init.lua

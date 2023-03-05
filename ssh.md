@@ -30,3 +30,24 @@ From there you can use `-i` with the private key file for password-less authenti
 ```
 ssh -i %USERPROFILE%\.ssh\laptop.rsa kevin@ubuntu
 ```
+
+Disable password auth on vm
+
+```
+sudo vim /etc/ssh/sshd_config
+```
+
+Add the following
+
+```
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+PermitRootLogin no
+PubkeyAuthentication yes
+```
+
+```
+sudo systemctl reload ssh
+```
+

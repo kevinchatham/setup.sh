@@ -36,6 +36,9 @@ sudo apt install neofetch -y
 echo "----- installing fira code ------"
 sudo apt install fonts-firacode -y
 
+echo "----- c++ essentials ------"
+sudo apt install build-essential 
+
 echo "----- installing azure cli ------"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 

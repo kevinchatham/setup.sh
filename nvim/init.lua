@@ -51,17 +51,17 @@ end
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 
-require'lspconfig'.terraformls.setup{}
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.formatting_sync,
-})
+-- require'lspconfig'.terraformls.setup{}
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+--   pattern = {"*.tf", "*.tfvars"},
+--   callback = vim.lsp.buf.formatting_sync,
+-- })
 
-create_autocmd('BufWritePost', {
-  command = 'source <afile> | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
-})
+-- create_autocmd('BufWritePost', {
+--   command = 'source <afile> | PackerCompile',
+--   group = packer_group,
+--   pattern = vim.fn.expand '$MYVIMRC',
+-- })
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
