@@ -56,7 +56,10 @@ alias zsh-themes="nvim ~/.oh-my-zsh"
 
 ## Neovim Screenshot
 
-![screenshot_nvim](images/nvim.png)
+![nvim](images/nvim.png)
+
+## ZSH Screenshot
+![zsh](images/zsh.png)
 
 ## SSH Keys
 
