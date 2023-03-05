@@ -50,3 +50,10 @@ alias java11="export JAVA_HOME=$JAVA_11_HOME"
 alias java8="export JAVA_HOME=$JAVA_8_HOME"
 
 java8 #set default
+
+function commit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
+
