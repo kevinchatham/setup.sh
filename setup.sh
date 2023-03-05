@@ -29,6 +29,8 @@ echo "----- configuring git ------"
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 git config --global credential.helper store
+git config --global init.defaultBranch main
+git config --global alias.ca '!git add -A && git commit -m'
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
@@ -37,7 +39,7 @@ echo "----- installing fira code ------"
 sudo apt install fonts-firacode -y
 
 echo "----- c++ essentials ------"
-sudo apt install build-essential 
+sudo apt install build-essential
 
 echo "----- installing azure cli ------"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash

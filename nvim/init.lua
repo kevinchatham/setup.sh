@@ -6,7 +6,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
   vim.cmd [[packadd packer.nvim]]
 end
-
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'                                              -- Package manager
     use 'tpope/vim-fugitive'                                                  -- Git commands in nvim use 'tpope/vim-rhubarb'
@@ -75,10 +74,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 vim.opt.guicursor = "i:blinkon100"
 
 -- Set colorscheme
-vim.cmd('au ColorScheme * hi Normal ctermbg=none guibg=none')
 vim.o.termguicolors = true
-vim.o.background = "dark"
 vim.cmd("colorscheme tokyonight-moon")
+vim.api.nvim_set_hl(0, "Normal",{ bg = "None"})
+vim.api.nvim_set_hl(0, "NormalFloat",{ bg = "None"})
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -136,8 +135,8 @@ local tokyo_night_moon  = {
   normal = {
     a = { fg = colors.glaucous, bg = colors.black },
     b = { fg = colors.glaucous, bg = colors.black },
-    c = { fg = colors.glaucous, bg = colors.background },
-    x = { fg = colors.glaucous, bg = colors.background },
+    c = { fg = colors.glaucous  },
+    x = { fg = colors.glaucous },
     y = { fg = colors.glaucous, bg = colors.background },
     z = { fg = colors.glaucous, bg = colors.black },
   },
