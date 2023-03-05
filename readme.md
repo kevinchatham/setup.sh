@@ -9,9 +9,9 @@ There are scripts for backing up and restoring configuration files, allowing for
 1. Clone and run `setup.sh`
 
     ```bash
-    git clone https://github.com/kevinchatham/ubuntu-setup.git ~
-    chmod +x ~/ubuntu-setup/setup.sh
-    sh ~/ubuntu-setup/setup.sh
+    git clone https://github.com/kevinchatham/setup.sh.git ~
+    chmod +x ~/setup.sh/setup.sh
+    sh ~/setup.sh/setup.sh
     ```
 
     - Enter default input / password when prompted.
