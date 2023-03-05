@@ -6,7 +6,8 @@ sudo apt install zsh -y
 
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp ~/wsl-ubuntu-setup/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
+cp ~/ubuntu-setup/themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
+cp ~/ubuntu-setup/themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
 
 echo "----- installing zsh auto suggestions ------"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
@@ -38,6 +39,9 @@ sudo apt install fonts-firacode -y
 echo "----- installing azure cli ------"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
+echo "----- installing dotnet 6.0 ------"
+sudo apt-get install -y dotnet-sdk-6.0
+
 echo "----- installing powershell ------"
 sudo apt-get install -y wget apt-transport-https software-properties-common
 wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
@@ -57,21 +61,6 @@ rm ~/terraform_${TER_VER}_linux_amd64.zip
 echo "----- installing sqlite ------"
 sudo apt install sqlite3 -y
 
-echo "----- installing open jdk 11 ------"
-sudo apt-get install openjdk-8-jdk
-sudo apt-get install openjdk-11-jdk
-sudo apt-get install openjdk-17-jdk
-sudo apt-get install openjdk-19-jdk
-
-echo "----- installing maven 3.8.4 ------"
-# https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/#installing-the-latest-release-of-apache-maven
-wget https://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz -P /tmp
-sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
-sudo ln -s /opt/apache-maven-3.8.4 /opt/maven # sym link When a new version is released, you can upgrade your Maven installation, by unpacking the newer version and change the symlink to point to it.
-sudo cp ./maven.sh /etc/profile.d/
-sudo chmod +x /etc/profile.d/maven.sh
-. /etc/profile.d/maven.sh
-
 echo "----- installing nvm (node version manager) ------"
 export NVM_DIR="$HOME/.nvm"
 rm -rf ~/.nvm
@@ -80,7 +69,7 @@ cd "$NVM_DIR"
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)` | bash
 . "$NVM_DIR/nvm.sh"
 . ./nvm.sh
-cd ~/wsl-ubuntu-setup
+cd ~/ubuntu-setup
 
 echo "----- allowing legacy dependencies ------"
 npm config set legacy-peer-deps true
@@ -95,10 +84,25 @@ echo "----- installing eslint ------"
 npm install -g eslint
 
 echo "----- installing profiles ------"
-cp ~/wsl-ubuntu-setup/.bashrc ~/.bashrc
-cp ~/wsl-ubuntu-setup/.zshrc ~/.zshrc
+cp ~/ubuntu-setup/.bashrc ~/.bashrc
+cp ~/ubuntu-setup/.zshrc ~/.zshrc
 
 echo "----- cleaning up ------"
 sudo apt autoremove -y
 
 echo "----- finished ------"
+
+# echo "----- installing open jdk 11 ------"
+# sudo apt-get install openjdk-8-jdk
+# sudo apt-get install openjdk-11-jdk
+# sudo apt-get install openjdk-17-jdk
+# sudo apt-get install openjdk-19-jdk
+
+# echo "----- installing maven 3.8.4 ------"
+# # https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/#installing-the-latest-release-of-apache-maven
+# wget https://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz -P /tmp
+# sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+# sudo ln -s /opt/apache-maven-3.8.4 /opt/maven # sym link When a new version is released, you can upgrade your Maven installation, by unpacking the newer version and change the symlink to point to it.
+# sudo cp ./java/maven.sh /etc/profile.d/
+# sudo chmod +x /etc/profile.d/maven.sh
+# . /etc/profile.d/maven.sh

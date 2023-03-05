@@ -6,14 +6,14 @@ Clone and run `setup.sh`
 
 ```bash
 cd ~
-git clone https://github.com/kevinchatham/wsl-ubuntu-setup.git
-chmod +x ~/wsl-ubuntu-setup/setup.sh
-~/wsl-ubuntu-setup/setup.sh
+git clone https://github.com/kevinchatham/ubuntu-setup.git
+chmod +x ~/ubuntu-setup/setup.sh
+~/ubuntu-setup/setup.sh
 ```
 
 - You will be prompted to configure `zsh`. Use the default options and `exit` when dropped into the new shell. Everything should continue normally after that.
 
-- Before launching VS Code, it is a good idea to close the shell after the script finishes.
+## WSL
 
 ### Resetting Ubuntu
 
