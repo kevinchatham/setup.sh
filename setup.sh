@@ -80,6 +80,9 @@ nvm install --lts
 echo "----- installing npm latest ------"
 npm install -g npm
 
+echo "----- installing gtop ------"
+npm install -g gtop
+
 echo "----- installing eslint ------"
 npm install -g eslint
 
