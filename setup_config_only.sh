@@ -3,7 +3,7 @@
 cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
 echo "--- setting up zsh config  ---"
-cp  ./zshrc ~/.zshrc
+cp  ./.zshrc ~/.zshrc
 cp  ./themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
 cp  ./themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
 

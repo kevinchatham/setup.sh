@@ -18,6 +18,42 @@ There are scripts for backing up and restoring configuration files, allowing for
 
     - You will be prompted to configure `zsh`. Use the default options / `y` and `exit` when dropped into the new shell. Everything should continue normally after that.
 
+## Aliases
+
+```bash
+# list hidden
+alias lh="ls -a"
+
+# comfort
+alias powershell="pwsh"
+
+# shorthand clear / exit
+alias c="clear"
+alias cls="clear"
+alias e="exit"
+
+# one word git actions
+alias add="git add ."
+alias commit=commit_function
+alias dif="git diff --color-words"
+alias status="git status"
+
+# one word os update / upgrade
+alias update="sudo apt update"
+alias upgrade="sudo apt update && sudo apt upgrade -y"
+
+# nvim only
+alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
+alias nvim-config="nvim ~/.config/nvim/init.lua"
+
+# zsh config, colors, and themes
+alias zsh-config="nvim ~/.zshrc"
+alias zsh-spectrum="spectrum_ls"
+alias zsh-themes="nvim ~/.oh-my-zsh"
+```
+
 ## Neovim Screenshot
 
 ![screenshot_nvim](images/nvim.png)
