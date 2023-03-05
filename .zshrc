@@ -5,8 +5,6 @@ export LS_COLORS="$LS_COLORS:ow=1;33:tw=1;33:" # adjusts folder colors in 'ls'
 
 export PATH="/snap/bin:$PATH"
 
-export PATH=/opt/apache-maven-3.8.4/bin:${PATH}
-
 ZSH_THEME="tokyo-night"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
@@ -20,16 +18,25 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=#86e1fc
 ZSH_HIGHLIGHT_STYLES[path]=none
 
 alias lh="ls -a"
+
 alias e="exit"
 alias cls="clear"
 alias c="clear"
+
+alias add="git add ."
+alias commit=commit_function
+alias status="git status"
+alias dif="git diff --color-words"
 alias update="sudo apt update"
 alias upgrade="sudo apt update && sudo apt upgrade -y"
+
 alias powershell="pwsh"
+
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias vi-config="nvim ~/.config/nvim/init.lua"
+
 alias zsh-spectrum="spectrum_ls"
 alias zsh-config="code ~/.zshrc"
 alias zsh-themes="code ~/.oh-my-zsh"
@@ -51,7 +58,7 @@ alias java8="export JAVA_HOME=$JAVA_8_HOME"
 
 java8 #set default
 
-function commit() {
+function commit_function() {
     git add .
     git commit -a -m "$1"
     git push

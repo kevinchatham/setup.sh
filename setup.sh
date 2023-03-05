@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# $PSScriptRoot in shell
+# https://stackoverflow.com/a/17744637
+cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+
+echo "----- granting execute ------"
+chmod +x ./nvim/setup_config_only.sh
+chmod +x ./setup_config_only.sh
+chmod +x ./nvim/backup.sh
+chmod +x ./backup.sh
+
 echo "----- installing zsh ------"
 sudo apt update
 sudo apt install zsh -y
@@ -20,17 +30,15 @@ sudo add-apt-repository universe
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update && sudo apt upgrade -y
 
-echo "----- installing neovim ------"
-sudo apt install neovim -y
-mkdir ~/.config/nvim
-cp nvim/init.lua ~/.config/nvim/init.lua
-
 echo "----- configuring git ------"
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 git config --global credential.helper store
 git config --global init.defaultBranch main
-git config --global alias.ca '!git add -A && git commit -m'
+
+echo "----- installing nvim ------"
+chmod +x nvim/setup.sh
+./nvim/setup.sh
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
