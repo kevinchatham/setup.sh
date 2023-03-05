@@ -1,6 +1,6 @@
 # SSH Keys
 
-It's easy to forget the steps to generate a key pair to configure SSH for password-less authentication. This is a guide to help you remember the steps.
+It's easy to forget the steps to generate a key pair to configure SSH for password-less authentication.
 
 ## Steps
 
