@@ -40,14 +40,14 @@ echo "----- installing azure cli ------"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 echo "----- installing dotnet 6.0 ------"
-sudo apt-get install -y dotnet-sdk-6.0
+sudo apt install -y dotnet-sdk-6.0
 
 echo "----- installing powershell ------"
-sudo apt-get install -y wget apt-transport-https software-properties-common
+sudo apt install -y wget apt-transport-https software-properties-common
 wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update
-sudo apt-get install -y powershell
+sudo apt update
+sudo apt install -y powershell
 rm packages-microsoft-prod.deb
 
 echo "----- installing terraform ------"
@@ -93,10 +93,10 @@ sudo apt autoremove -y
 echo "----- finished ------"
 
 # echo "----- installing open jdk 11 ------"
-# sudo apt-get install openjdk-8-jdk
-# sudo apt-get install openjdk-11-jdk
-# sudo apt-get install openjdk-17-jdk
-# sudo apt-get install openjdk-19-jdk
+# sudo apt install openjdk-8-jdk -y
+# sudo apt install openjdk-11-jdk -y
+# sudo apt install openjdk-17-jdk -y
+# sudo apt install openjdk-19-jdk -y
 
 # echo "----- installing maven 3.8.4 ------"
 # # https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-20-04/#installing-the-latest-release-of-apache-maven
