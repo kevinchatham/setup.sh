@@ -61,61 +61,6 @@ alias zsh-themes="nvim ~/.oh-my-zsh"
 ## ZSH Screenshot
 ![zsh](images/zsh.png)
 
-## SSH Keys
-
-It's easy to forget the steps to generate a key pair to configure SSH for password-less authentication.
-
-### Steps
-
-1. Generate SSH Keys ( `laptop.rsa` + `laptop.pub` )
-
-    ```
-    ssh-keygen -t rsa -b 4096
-    ```
-
-1. Add Remote SSH Host configuration to Laptop ( VSCode )
-
-    ```
-    Host Ubuntu
-        HostName ubuntu
-        User kevin
-        IdentityFile ~/.ssh/laptop.rsa
-    ```
-
-1. Add content of `laptop.pub` to authorized key file ( VM )
-
-    ```
-    sudo nano ~/.ssh/authorized_keys
-    ```
-
-1. From there you can use `-i` with the private key file for password-less authentication.
-
-    ```
-    ssh -i %USERPROFILE%\.ssh\laptop.rsa kevin@ubuntu
-    ```
-
-1. Disable password auth on vm
-
-    ```
-    sudo vim /etc/ssh/sshd_config
-    ```
-
-1. Add or change the following
-
-    ```
-    ChallengeResponseAuthentication no
-    PasswordAuthentication no
-    UsePAM no
-    PermitRootLogin no
-    PubkeyAuthentication yes
-    ```
-
-1. Restart SSH
-
-    ```
-    sudo systemctl reload ssh
-    ```
-
 ## WSL
 
 ### Resetting Ubuntu
