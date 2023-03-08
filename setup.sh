@@ -13,6 +13,10 @@ chmod +x ./backup.sh
 echo "----- system updates ------"
 sudo apt update && sudo apt upgrade
 
+echo "----- configuring ssh ------"
+sudo apt install openssh-server -y
+sudo service ssh start
+
 echo "----- configuring git ------"
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
