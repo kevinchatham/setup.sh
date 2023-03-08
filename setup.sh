@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # $PSScriptRoot in shell
 cd "$(dirname "$0")"
