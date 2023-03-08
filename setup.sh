@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # $PSScriptRoot in shell
-# https://stackoverflow.com/a/17744637
-cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+cd "$(dirname "$0")"
 
 echo "----- granting execute ------"
 chmod +x ./nvim/setup_config_only.sh
@@ -81,9 +80,7 @@ rm -rf ~/.nvm
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
 cd "$NVM_DIR"
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)` | bash
-. "$NVM_DIR/nvm.sh"
 . ./nvm.sh
-cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
 echo "----- allowing legacy dependencies ------"
 npm config set legacy-peer-deps true
@@ -101,6 +98,7 @@ echo "----- installing eslint ------"
 npm install -g eslint
 
 echo "----- installing profiles ------"
+cd "$(dirname "$0")"
 cp .bashrc ~/.bashrc
 cp .zshrc ~/.zshrc
 

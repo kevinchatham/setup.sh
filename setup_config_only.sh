@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
+cd "$(dirname "$0")"
 
 echo "--- setting up zsh config  ---"
 cp  ./.zshrc ~/.zshrc
