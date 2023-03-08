@@ -9,7 +9,7 @@ There are scripts for backing up and restoring configuration files, allowing for
 1. Clone and run `setup.sh`
 
     ```bash
-    sudo apt install git -y && git clone https://github.com/kevinchatham/setup.sh ~
+    sudo apt install git -y && git clone https://github.com/kevinchatham/setup.sh ~/setup.sh
     chmod +x ~/setup.sh/setup.sh
     sh ~/setup.sh/setup.sh
     ```
