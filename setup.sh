@@ -22,9 +22,6 @@ git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 git config --global credential.helper store
 git config --global init.defaultBranch main
 
-echo "----- installing curl ------"
-sudo apt install curl -y
-
 echo "----- installing zsh ------"
 sudo apt install zsh -y
 
