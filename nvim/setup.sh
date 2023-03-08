@@ -3,7 +3,6 @@
 cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
 echo "--- installing nvim ----"
-sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt install build-essential -y
 sudo apt install neovim -y
 
