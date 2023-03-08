@@ -10,7 +10,13 @@ chmod +x ./setup_config_only.sh
 chmod +x ./nvim/backup.sh
 chmod +x ./backup.sh
 
-sudo apt update
+sudo apt update && sudo apt upgrade
+
+echo "----- configuring git ------"
+git config --global user.name kevinchatham
+git config --global user.email 40923272+kevinchatham@users.noreply.github.com
+git config --global credential.helper store
+git config --global init.defaultBranch main
 
 echo "----- installing curl ------"
 sudo apt install curl -y
@@ -33,12 +39,6 @@ echo "----- system updates ------"
 sudo add-apt-repository universe
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update && sudo apt upgrade -y
-
-echo "----- configuring git ------"
-git config --global user.name kevinchatham
-git config --global user.email 40923272+kevinchatham@users.noreply.github.com
-git config --global credential.helper store
-git config --global init.defaultBranch main
 
 echo "----- installing nvim ------"
 chmod +x nvim/setup.sh
