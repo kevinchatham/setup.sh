@@ -39,6 +39,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plug
 echo "----- installing zsh syntax highlighting ------"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
+echo "----- installing profiles ------"
+cp .bashrc ~/.bashrc
+cp .zshrc ~/.zshrc
+
 echo "----- installing nvim ------"
 chmod +x nvim/setup.sh
 ./nvim/setup.sh
@@ -96,11 +100,6 @@ npm install -g gtop
 
 echo "----- installing eslint ------"
 npm install -g eslint
-
-echo "----- installing profiles ------"
-cd "$(dirname "$0")"
-cp .bashrc ~/.bashrc
-cp .zshrc ~/.zshrc
 
 echo "----- cleaning up ------"
 sudo apt autoremove -y
