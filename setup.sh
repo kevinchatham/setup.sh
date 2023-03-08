@@ -16,8 +16,8 @@ sudo apt install zsh -y
 
 echo "----- installing oh my zsh ------"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp ~/ubuntu-setup/themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
-cp ~/ubuntu-setup/themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
+cp ./themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
+cp ./themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
 
 echo "----- installing zsh auto suggestions ------"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
