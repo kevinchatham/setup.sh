@@ -10,7 +10,7 @@ There are scripts for backing up and restoring configuration files, allowing for
 
     ```bash
     sudo apt install curl -y
-    curl https://kevinc.design/setup | sh
+    curl https://kevinc.design/launch.sh | sh
     ```
 
     - Enter default input / password when prompted.
