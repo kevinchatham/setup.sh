@@ -82,7 +82,7 @@ cd "$NVM_DIR"
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)` | bash
 . "$NVM_DIR/nvm.sh"
 . ./nvm.sh
-cd ~/ubuntu-setup
+cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)"
 
 echo "----- allowing legacy dependencies ------"
 npm config set legacy-peer-deps true
@@ -100,8 +100,8 @@ echo "----- installing eslint ------"
 npm install -g eslint
 
 echo "----- installing profiles ------"
-cp ~/ubuntu-setup/.bashrc ~/.bashrc
-cp ~/ubuntu-setup/.zshrc ~/.zshrc
+cp .bashrc ~/.bashrc
+cp .zshrc ~/.zshrc
 
 echo "----- cleaning up ------"
 sudo apt autoremove -y
