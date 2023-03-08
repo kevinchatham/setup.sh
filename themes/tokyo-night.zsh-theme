@@ -7,11 +7,10 @@ function virtualenv_prompt_info {
 
 function prompt_char {
   echo ""
-  #command git branch &>/dev/null && echo "±" || echo '○'
 }
 
 function box_name {
-  [ -f ~/.box-name ] && cat ~/.box-name || echo ${SHORT_HOST:-$HOST}
+  hostname
 }
 
 local ruby_env='$(ruby_prompt_info)'
@@ -19,7 +18,7 @@ local git_info='$(git_prompt_info)'
 local virtualenv_info='$(virtualenv_prompt_info)'
 local prompt_char='$(prompt_char)'
 
-PROMPT="╭─ %B${FG[063]}%~%b${git_info}${ruby_env}${virtualenv_info}
+PROMPT="╭─ %B${FG[063]}$(box_name) ${FG[063]}%~%b${git_info}
 ╰─${prompt_char}%{$reset_color%} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" ${FG[242]}on%{$reset_color%} ${FG[069]}"
