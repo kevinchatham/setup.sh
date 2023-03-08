@@ -10,6 +10,7 @@ chmod +x ./setup_config_only.sh
 chmod +x ./nvim/backup.sh
 chmod +x ./backup.sh
 
+echo "----- system updates ------"
 sudo apt update && sudo apt upgrade
 
 echo "----- configuring git ------"
@@ -35,11 +36,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plug
 echo "----- installing zsh syntax highlighting ------"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
-echo "----- system updates ------"
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt update && sudo apt upgrade -y
-
 echo "----- installing nvim ------"
 chmod +x nvim/setup.sh
 ./nvim/setup.sh
@@ -49,9 +45,6 @@ sudo apt install neofetch -y
 
 echo "----- installing fira code ------"
 sudo apt install fonts-firacode -y
-
-echo "----- c++ essentials ------"
-sudo apt install build-essential
 
 echo "----- installing azure cli ------"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
