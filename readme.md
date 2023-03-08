@@ -59,25 +59,3 @@ alias zsh-themes="nvim ~/.oh-my-zsh"
 
 ## ZSH Screenshot
 ![zsh](images/zsh.png)
-
-## WSL
-
-### Resetting Ubuntu
-
-Ubuntu can be reset with one of these commands.
-
-- WSLv2:
-
-    ```batch
-    wsl --unregister Ubuntu && ubuntu
-    ```
-
-- WSLv1:
-
-    ```batch
-    wslconfig /unregister Ubuntu && ubuntu
-    ```
-
-### Install Ubuntu Without Microsoft Store
-
-If you do not have access to the Microsoft Store, don't worry, Ubuntu can be manually installed. Please see [this documentation](https://docs.microsoft.com/en-us/windows/wsl/install-manual) (at Downloading Distributions) for more details. Note that you will need to [install WSL](https://docs.microsoft.com/en-us/windows/wsl/install) first.
