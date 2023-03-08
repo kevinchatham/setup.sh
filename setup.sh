@@ -10,8 +10,12 @@ chmod +x ./setup_config_only.sh
 chmod +x ./nvim/backup.sh
 chmod +x ./backup.sh
 
-echo "----- installing zsh ------"
 sudo apt update
+
+echo "----- installing curl ------"
+sudo apt install curl -y
+
+echo "----- installing zsh ------"
 sudo apt install zsh -y
 
 echo "----- installing oh my zsh ------"
