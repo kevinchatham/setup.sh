@@ -3,6 +3,7 @@
 cd "$(dirname "$0")"
 
 echo "--- backing up zsh  ---"
+cp ~/.bashrc ../profiles/.bashrc
 cp ~/.zshrc ../profiles/.zshrc
 cp ~/.oh-my-zsh/themes/tokyo-night.zsh-theme ../themes/tokyo-night.zsh-theme
 cp ~/.oh-my-zsh/themes/calm.zsh-theme ../themes/calm.zsh-theme

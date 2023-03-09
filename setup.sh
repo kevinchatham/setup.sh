@@ -37,10 +37,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plug
 echo "----- installing zsh syntax highlighting ------"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
-echo "----- installing profiles ------"
-cp .bashrc ~/.bashrc
-cp .zshrc ~/.zshrc
-
 echo "--- installing nvim ----"
 sudo apt install build-essential -y
 mkdir -p ~/.nvim

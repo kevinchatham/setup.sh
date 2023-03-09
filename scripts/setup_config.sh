@@ -3,6 +3,7 @@
 cd "$(dirname "$0")"
 
 echo "--- setting up zsh config  ---"
+cp  ../profiles/.bashrc ~/.bashrc
 cp  ../profiles/.zshrc ~/.zshrc
 cp  ../themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
 cp  ../themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
