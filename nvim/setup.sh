@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $(pwd)
+cd "$(dirname "$0")"
 
 export OD=$(pwd)
 
@@ -12,7 +12,7 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
 
-cd $(pwd)
+cd $OD
 
 echo "--- done  ---"
 chmod +x setup_config_only.sh
