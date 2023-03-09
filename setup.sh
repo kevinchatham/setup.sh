@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")" # script root
 
-export OD="$(dirname "$0")"
+export OWD="$(pwd)"
 
 echo "----- granting execute ------"
 chmod +x ./scripts/backup_config.sh
@@ -46,7 +46,7 @@ cd ~/.nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
-cd $OD
+cd $OWD
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
