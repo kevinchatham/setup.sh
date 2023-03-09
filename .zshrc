@@ -20,6 +20,7 @@ alias update="sudo apt update"
 alias upgrade="sudo apt update && sudo apt upgrade -y"
 
 # nvim only
+alias nvim="~/.nvim/squashfs-root/AppRun"
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"

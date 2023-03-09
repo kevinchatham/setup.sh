@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # $PSScriptRoot in shell
-cd "$(dirname "$0")"
+cd $(pwd)
 
 echo "----- granting execute ------"
 chmod +x ./nvim/setup_config_only.sh

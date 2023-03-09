@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")"
+cd $(pwd)
 
 echo "--- backing up zsh  ---"
 cp ~/.zshrc .zshrc
