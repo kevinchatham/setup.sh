@@ -111,6 +111,8 @@ sudo apt autoremove -y
 
 echo "----- finished ------"
 
+exec bash
+
 # echo "----- installing open jdk 11 ------"
 # sudo apt install openjdk-8-jdk -y
 # sudo apt install openjdk-11-jdk -y
