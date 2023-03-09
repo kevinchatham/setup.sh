@@ -10,7 +10,7 @@ echo "----- system updates ------"
 sudo apt update && sudo apt upgrade
 
 echo "----- configuring git ------"
-sudo apt install giy -y
+sudo apt install git -y
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 git config --global credential.helper store
