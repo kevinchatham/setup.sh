@@ -2,6 +2,8 @@
 
 cd "$(dirname "$0")" # script root
 
+export OD="$(dirname "$0")"
+
 echo "----- granting execute ------"
 chmod +x ./scripts/backup_config.sh
 chmod +x ./scripts/setup_config.sh
@@ -44,7 +46,7 @@ cd ~/.nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
-cd "$(dirname "$0")"
+cd $OD
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
@@ -89,7 +91,7 @@ rm -rf ~/.nvm
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
 cd "$NVM_DIR"
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)` | bash
-. ./nvm.sh
+. ./nvm.sh # last overall step because of this
 
 echo "----- allowing legacy dependencies ------"
 npm config set legacy-peer-deps true
