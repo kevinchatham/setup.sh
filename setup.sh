@@ -81,6 +81,12 @@ rm ~/terraform_${TER_VER}_linux_amd64.zip
 echo "----- installing sqlite ------"
 sudo apt install sqlite3 -y
 
+echo "----- cleaning up ------"
+sudo apt autoremove -y
+
+echo "----- installing configurations ------"
+./scripts/setup_config.sh
+
 echo "----- installing nvm (node version manager) ------"
 export NVM_DIR="$HOME/.nvm"
 rm -rf ~/.nvm
@@ -103,11 +109,6 @@ npm install -g gtop
 
 echo "----- installing eslint ------"
 npm install -g eslint
-
-echo "----- cleaning up ------"
-sudo apt autoremove -y
-
-./scripts/setup_config.sh
 
 echo "----- finished ------"
 
