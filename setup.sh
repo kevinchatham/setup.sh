@@ -9,15 +9,19 @@ chmod +x ./scripts/setup_config.sh
 echo "----- system updates ------"
 sudo apt update && sudo apt upgrade
 
-echo "----- configuring ssh ------"
-sudo apt install openssh-server -y
-sudo service ssh start
-
 echo "----- configuring git ------"
+sudo apt install giy -y
 git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 git config --global credential.helper store
 git config --global init.defaultBranch main
+
+echo "----- installing curl ------"
+sudo apt install curl -y
+
+echo "----- installing ssh ------"
+sudo apt install openssh-server -y
+sudo service ssh start
 
 echo "----- installing zsh ------"
 sudo apt install zsh -y

@@ -9,8 +9,7 @@ To pair with the primary setup script there are additional scripts for backing u
 1. Clone and run `setup.sh`
 
     ```bash
-    sudo apt install curl -y
-    curl https://kevinc.design/launch.sh | sh
+    bash <(curl https://kevinc.design/launch.sh)
     ```
 
     - Enter default input / password when prompted.
