@@ -93,9 +93,6 @@ cd "$NVM_DIR"
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)` | bash
 . ./nvm.sh # last overall step because of this
 
-echo "----- allowing legacy dependencies ------"
-npm config set legacy-peer-deps true
-
 echo "----- installing node lts ------"
 nvm install --lts
 
@@ -107,6 +104,9 @@ npm install -g gtop
 
 echo "----- installing eslint ------"
 npm install -g eslint
+
+echo "----- allowing legacy dependencies ------"
+npm config set legacy-peer-deps true
 
 echo "----- finished ------"
 
