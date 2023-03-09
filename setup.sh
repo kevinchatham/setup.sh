@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
-# $PSScriptRoot in shell
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" # script root
 
 echo "----- granting execute ------"
-chmod +x ./nvim/setup_config_only.sh
-chmod +x ./setup_config_only.sh
-chmod +x ./nvim/backup.sh
-chmod +x ./backup.sh
+chmod +x ./scripts/backup_config.sh
+chmod +x ./scripts/setup_config.sh
 
 echo "----- system updates ------"
 sudo apt update && sudo apt upgrade
@@ -40,9 +37,14 @@ echo "----- installing profiles ------"
 cp .bashrc ~/.bashrc
 cp .zshrc ~/.zshrc
 
-echo "----- installing nvim ------"
-chmod +x nvim/setup.sh
-./nvim/setup.sh
+echo "--- installing nvim ----"
+sudo apt install build-essential -y
+mkdir -p ~/.nvim
+cd ~/.nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage --appimage-extract
+cd "$(dirname "$0")"
 
 echo "----- installing neofetch ------"
 sudo apt install neofetch -y
@@ -100,6 +102,8 @@ npm install -g eslint
 
 echo "----- cleaning up ------"
 sudo apt autoremove -y
+
+./scripts/setup_config.sh
 
 echo "----- finished ------"
 
