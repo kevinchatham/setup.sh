@@ -55,7 +55,7 @@ alias zsh-themes="nvim ~/.oh-my-zsh"
 
 ## Neovim Screenshot
 
-![nvim](images/nvim.png)
+![nvim](images/nvim-theme.png)
 
-## ZSH Screenshot
-![zsh](images/zsh.png)
+## Shell Theme (starship.toml)
+![shell-theme](images/shell-theme.png)
