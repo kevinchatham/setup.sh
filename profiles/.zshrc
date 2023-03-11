@@ -26,7 +26,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias nvim-config="nvim ~/.config/nvim/init.lua"
 
-# zsh config, colors, and themes
 alias zsh-config="nvim ~/.zshrc"
 alias zsh-spectrum="spectrum_ls"
 alias zsh-themes="nvim ~/.oh-my-zsh"
@@ -35,19 +34,21 @@ alias zsh-themes="nvim ~/.oh-my-zsh"
 export ZSH="/home/kevin/.oh-my-zsh"
 export LS_COLORS="$LS_COLORS:ow=1;33:tw=1;33:"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-ZSH_THEME="tokyo-night"
+# ZSH_THEME="tokyo-night"
 
 # zsh command colors
 source $ZSH/oh-my-zsh.sh
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#86e1fc#
-ZSH_HIGHLIGHT_STYLES[alias]=fg=#86e1fc
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=#86e1fc
-ZSH_HIGHLIGHT_STYLES[arg0]=fg=#86e1fc
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#61afef
+ZSH_HIGHLIGHT_STYLES[alias]=fg=#61afef
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=#61afef
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=#61afef
 ZSH_HIGHLIGHT_STYLES[path]=none
+
+eval "$(starship init zsh)"
 
 # load nvm + nvm bash completion
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # shorthand commit all w messsage + push
