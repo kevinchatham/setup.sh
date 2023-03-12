@@ -74,6 +74,23 @@ chmod u+x nvim.appimage
 cd $OWD
 
 echo ""
+echo "----- installing unzip -----"
+echo ""
+sudo apt install unzip -y
+
+# TODO For Hyper-V Console
+# echo ""
+# echo "----- installing fira code nerd font -----"
+# echo ""
+# sudo apt install unzip -y
+# rm ~/FiraCode.zip
+# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip ~
+# mkdir -p ~/.fonts
+# unzip ~/FiraCode.zip -d ~/.fonts
+# fc-cache -fv # idk about this
+# rm ~/FiraCode.zip
+
+echo ""
 echo "----- installing neofetch -----"
 echo ""
 sudo apt install neofetch -y
