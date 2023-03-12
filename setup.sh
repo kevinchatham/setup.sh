@@ -63,7 +63,7 @@ echo ""
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 echo ""
-echo "----- installing nvim ------"
+echo "----- installing nvim -----"
 echo ""
 sudo apt install build-essential -y
 mkdir -p ~/.nvim
@@ -77,11 +77,6 @@ echo ""
 echo "----- installing neofetch -----"
 echo ""
 sudo apt install neofetch -y
-
-echo ""
-echo "----- installing fira code -----"
-echo ""
-sudo apt install fonts-firacode -y
 
 echo ""
 echo "----- installing azure cli -----"
@@ -157,11 +152,6 @@ echo ""
 echo "----- installing eslint -----"
 echo ""
 npm install -g eslint
-
-echo ""
-echo "----- allowing legacy dependencies -----"
-echo ""
-npm config set legacy-peer-deps true
 
 echo ""
 echo "----- finished -----"
