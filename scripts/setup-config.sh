@@ -13,6 +13,7 @@ echo "----- setting up themes  -----"
 echo ""
 cp  ../themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes
 cp  ../themes/calm.zsh-theme ~/.oh-my-zsh/themes
+mkdir -p ~/.config
 cp  ../themes/starship.toml ~/.config
 
 echo ""
