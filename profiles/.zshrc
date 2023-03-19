@@ -9,6 +9,9 @@ alias c="clear"
 alias cls="clear"
 alias e="exit"
 
+# kill node
+alias kill-node="pkill -f node"
+
 # one word git actions
 alias add="git add ."
 alias commit=commit_function
@@ -26,6 +29,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias nvim-config="nvim ~/.config/nvim/init.lua"
 
+# zsh
 alias zsh-config="nvim ~/.zshrc"
 alias zsh-spectrum="spectrum_ls"
 alias zsh-themes="nvim ~/.oh-my-zsh"
