@@ -55,6 +55,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# increase node memory limit
+export NODE_OPTIONS="--max-old-space-size=8192"
+
 # shorthand commit all w messsage + push
 function commit_function() {
     git add .
