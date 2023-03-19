@@ -16,6 +16,11 @@ echo ""
 sudo apt update && sudo apt upgrade
 
 echo ""
+echo "----- increasing file watcher count -----"
+echo ""
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+
+echo ""
 echo "----- configuring git -----"
 echo ""
 sudo apt install git -y
