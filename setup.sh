@@ -166,11 +166,6 @@ echo ""
 npm install -g npm
 
 echo ""
-echo "----- installing eslint -----"
-echo ""
-npm install -g eslint
-
-echo ""
 echo "----- finished -----"
 echo ""
 
