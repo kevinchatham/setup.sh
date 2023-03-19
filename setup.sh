@@ -106,6 +106,11 @@ echo ""
 sudo apt install -y dotnet-sdk-6.0
 
 echo ""
+echo "----- installing htop -----"
+echo ""
+sudo apt install -y htop
+
+echo ""
 echo "----- installing powershell -----"
 echo ""
 sudo apt install -y wget apt-transport-https software-properties-common
@@ -159,11 +164,6 @@ echo ""
 echo "----- installing npm latest -----"
 echo ""
 npm install -g npm
-
-echo ""
-echo "----- installing gtop -----"
-echo ""
-npm install -g gtop
 
 echo ""
 echo "----- installing eslint -----"
