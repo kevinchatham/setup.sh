@@ -28,6 +28,7 @@ git config --global user.name kevinchatham
 git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 git config --global credential.helper store
 git config --global init.defaultBranch main
+git config --global pull.rebase true
 
 echo ""
 echo "----- installing curl -----"
