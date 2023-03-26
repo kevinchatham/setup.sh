@@ -1,3 +1,8 @@
+export NODE_OPTIONS="--max-old-space-size=8192"
+
+# node killer
+alias kill-node="pkill -f node"
+
 # list hidden
 alias lh="ls -a"
 
@@ -34,19 +39,33 @@ alias zsh-config="nvim ~/.zshrc"
 alias zsh-spectrum="spectrum_ls"
 alias zsh-themes="nvim ~/.oh-my-zsh"
 
-# zsh colors, theme, plugins 
+# zsh colors, theme, plugins
 export ZSH="/home/kevin/.oh-my-zsh"
 export LS_COLORS="$LS_COLORS:ow=1;33:tw=1;33:"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # ZSH_THEME="tokyo-night"
 
 # zsh command colors
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+# https://github.com/zsh-users/zsh-autosuggestions
 source $ZSH/oh-my-zsh.sh
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#61afef
-ZSH_HIGHLIGHT_STYLES[alias]=fg=#61afef
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=#61afef
-ZSH_HIGHLIGHT_STYLES[arg0]=fg=#61afef
-ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path]=none                         # No color for path arguments
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=#61afef             # No color for pre-command modifiers
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=#61afef                   # Blue color for the first argument (command name)
+ZSH_HIGHLIGHT_STYLES[default]=fg=white                  # White color for all other arguments
+ZSH_HIGHLIGHT_STYLES[alias]=fg=#61afef                  # Blue color for command aliases
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#61afef           # Blue color for suffix aliases
+ZSH_HIGHLIGHT_STYLES[command]=fg=#61afef                # Blue color for command names
+ZSH_HIGHLIGHT_STYLES[function]=fg=#61afef               # Blue color for function names
+ZSH_HIGHLIGHT_STYLES[builtin]=fg=#61afef                # Blue color for built-in commands
+ZSH_HIGHLIGHT_STYLES[back-quoted-command]=fg=#98c379    # Light green color for back-quoted commands
+ZSH_HIGHLIGHT_STYLES[command-substitution]=fg=#98c379   # Light green color for command substitutions
+ZSH_HIGHLIGHT_STYLES[command-line-argument]=fg=white    # White color for command line arguments
+ZSH_HIGHLIGHT_STYLES[pattern]=fg=#e06c75                # Red color for patterns
+ZSH_HIGHLIGHT_STYLES[variable]=fg=#d19a66               # Orange color for variables
+ZSH_HIGHLIGHT_STYLES[environment-variable]=fg=#d19a66   # Orange color for environment variables
+ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=#c678dd      # Purple color for history expansions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#111"               # Dark gray color for autocomplete suggestions
 
 eval "$(starship init zsh)"
 
