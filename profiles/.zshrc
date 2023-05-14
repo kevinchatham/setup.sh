@@ -1,8 +1,3 @@
-export NODE_OPTIONS="--max-old-space-size=8192"
-
-# node killer
-alias kill-node="pkill -f node"
-
 # list hidden
 alias lh="ls -a"
 
@@ -14,8 +9,14 @@ alias c="clear"
 alias cls="clear"
 alias e="exit"
 
-# kill node
-alias kill-node="pkill -f node"
+# npm
+alias npr="npm run"
+alias npi="npm i"
+alias npk="pkill -f node"
+export NODE_OPTIONS="--max-old-space-size=8192"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # one word git actions
 alias add="git add ."
@@ -68,14 +69,6 @@ ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=#c678dd      # Purple color for histo
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#111"               # Dark gray color for autocomplete suggestions
 
 eval "$(starship init zsh)"
-
-# load nvm + nvm bash completion
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# increase node memory limit
-export NODE_OPTIONS="--max-old-space-size=8192"
 
 # shorthand commit all w messsage + push
 function commit_function() {
