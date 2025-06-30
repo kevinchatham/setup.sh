@@ -62,8 +62,8 @@ install_oh_my_zsh() {
     fi
     
     echo "🎨 Setting up Zsh themes..."
-    cp ./themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
-    cp ./themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
+    cp ./themes/oh-my-zsh/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
+    cp ./themes/oh-my-zsh/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
     
     echo "🧩 Installing/updating Zsh plugins..."
     local ZSH_CUSTOM_PLUGINS="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"

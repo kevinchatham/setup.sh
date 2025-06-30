@@ -1,0 +1,58 @@
+format = """
+[](fg:#61afef)$directory\
+[](fg:#61afef bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#212736 bg:#394260)\
+$nodejs\
+[](fg:#212736)\
+$hostname\
+\n\n$character"""
+
+add_newline = true
+
+[hostname]
+format=' on [$ssh_symbol$hostname]($style)'
+style='fg:#61afef'
+ssh_symbol=' '
+
+[character]
+success_symbol = '[](bold fg:#61afef)'
+error_symbol = '[X](bold red)'
+
+[directory]
+style = "fg:#373c4a bg:#61afef"
+format = "[$path]($style)"
+truncation_length = 3
+truncation_symbol = "../"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#61afef bg:#394260)]($style)'
+
+[git_status]
+style = "bg:#394260"
+format = '[[($all_status )](fg:#61afef bg:#394260)]($style)'
+conflicted = '🏳'
+ahead = '🏎💨'
+behind = '😰'
+diverged = '😵'
+up_to_date = '✓'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
+
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[$symbol ($version)](fg:#61afef bg:#212736)]($style)'
