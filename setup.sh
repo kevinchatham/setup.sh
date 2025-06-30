@@ -95,57 +95,28 @@ install_azure_cli() {
 }
 
 install_dotnet() {
-    if ! is_installed dotnet; then
-        echo "📦 Installing .NET 9 SDK..."
-        # Per https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-install
-        # .NET installation method depends on the OS and version.
-        source /etc/os-release
-        
-        case "$ID" in
-            ubuntu)
-                case "$VERSION_ID" in
-                    "24.04")
-                        echo "Adding .NET backports PPA for Ubuntu 24.04 to install .NET 9."
-                        sudo add-apt-repository -y ppa:dotnet/backports
-                        sudo apt update
-                        ;;
-                    "24.10")
-                        echo "Using standard Ubuntu 24.10 repository for .NET 9."
-                        ;;
-                    *)
-                        echo "Warning: This script doesn't support automatic .NET 9 installation on Ubuntu ${VERSION_ID}."
-                        echo "Skipping .NET installation. Please see https://dot.net/v1/dotnet-install.sh for manual installation."
-                        return
-                        ;;
-                esac
-                sudo apt install -y dotnet-sdk-9.0
-                ;;
-            debian)
-                echo "Installing .NET 9 on Debian using the dotnet-install script."
-                curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
-                chmod +x ./dotnet-install.sh
-                sudo ./dotnet-install.sh --channel 9.0 --install-dir /usr/share/dotnet
-                sudo ln -sf /usr/share/dotnet/dotnet /usr/local/bin/dotnet
-                rm ./dotnet-install.sh
-                ;;
-            *)
-                echo "Warning: Unsupported distribution '$ID'. This script only supports Ubuntu and Debian for .NET installation."
-                echo "Skipping .NET installation. Please see https://dot.net/v1/dotnet-install.sh for manual installation."
-                ;;
-        esac
-    else
-        source /etc/os-release
-        if [[ "$ID" == "debian" ]]; then
-            echo "📦 .NET is installed. Checking for updates on Debian..."
-            curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
-            chmod +x ./dotnet-install.sh
-            sudo ./dotnet-install.sh --channel 9.0 --install-dir /usr/share/dotnet
-            sudo ln -sf /usr/share/dotnet/dotnet /usr/local/bin/dotnet
-            rm ./dotnet-install.sh
-        else
-            echo "Dotnet SDK already installed, skipping. It will be updated by 'apt upgrade'."
-        fi
+    echo "📦 Installing/updating .NET 8 and 9 SDKs for Debian..."
+
+    source /etc/os-release
+    if [ "$ID" != "debian" ]; then
+        echo "Warning: Unsupported distribution '$ID'. This script only supports Debian for .NET installation."
+        echo "Skipping .NET installation. Please see https://dot.net/v1/dotnet-install.sh for manual installation."
+        return
     fi
+
+    curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
+    chmod +x ./dotnet-install.sh
+
+    echo "Installing/Updating .NET 8 SDK..."
+    sudo ./dotnet-install.sh --channel 8.0 --install-dir /usr/share/dotnet
+
+    echo "Installing/Updating .NET 9 SDK..."
+    sudo ./dotnet-install.sh --channel 9.0 --install-dir /usr/share/dotnet
+    
+    sudo ln -sf /usr/share/dotnet/dotnet /usr/local/bin/dotnet
+    rm ./dotnet-install.sh
+
+    echo ".NET SDKs installation/update process finished."
 }
 
 install_powershell() {

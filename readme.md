@@ -14,7 +14,7 @@ This setup script will install and configure the following:
   - **OpenSSH Server:** Installed and enabled automatically if the script is *not* running in a WSL environment.
 - **Development Tools:**
   - **Git:** Including basic user configuration.
-  - **.NET SDK (v9):** Installed via the recommended method for your OS.
+  - **.NET SDK (v8 & v9):** Installed via the recommended method for your OS.
   - **PowerShell:** Installed as a cross-platform .NET global tool.
   - **Terraform:** The latest version is automatically detected and installed.
 - **Node.js Environment:**
