@@ -26,7 +26,7 @@ alias status="git status"
 
 # one word os update / upgrade
 alias update="sudo apt update"
-alias upgrade="sudo apt update && sudo apt upgrade -y"
+alias upgrade="sudo apt update && sudo apt upgrade -y && ~/setup.sh/setup.sh"
 
 # nvim only
 alias nvim="~/.nvim/squashfs-root/AppRun"
