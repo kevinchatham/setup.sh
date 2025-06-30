@@ -18,6 +18,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# ASP.NET Core
+export ASPNETCORE_ENVIRONMENT="Development"
+
 # one word git actions
 alias add="git add ."
 alias commit=commit_function
