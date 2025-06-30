@@ -36,6 +36,11 @@ configure_git() {
     git config --global user.email 40923272+kevinchatham@users.noreply.github.com
 }
 
+install_flyctl(){
+    echo "📦 Installing Flyctl..."
+    curl -L https://fly.io/install.sh | sh
+}
+
 install_starship() {
     if ! is_installed starship; then
         echo "🚀 Installing Starship prompt..."

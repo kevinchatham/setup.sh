@@ -77,6 +77,11 @@ function commit_function() {
     git push
 }
 
+# flyctl
+export FLYCTL_INSTALL="/home/kevin/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+alias fly="flyctl"
+
 # TODO - MULTIPLE FLAVORS OF JAVA
 # export JAVA_19_HOME=/usr/lib/jvm/java-19-openjdk-amd64/bin/
 # export JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/
