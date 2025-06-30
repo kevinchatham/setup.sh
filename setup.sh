@@ -39,36 +39,44 @@ configure_git() {
 install_starship() {
     if ! is_installed starship; then
         echo "🚀 Installing Starship prompt..."
-        curl -sS https://starship.rs/install.sh | sh -s -- -y
+        curl -sS https://starship.rs/install.sh | sudo sh -s -- -y
     else
-        echo "Starship already installed, skipping."
+        echo "🚀 Starship is installed. Checking for updates by re-running the installer..."
+        curl -sS https://starship.rs/install.sh | sudo sh -s -- -y
     fi
 }
 
 install_oh_my_zsh() {
-    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    local ZSH_DIR="$HOME/.oh-my-zsh"
+    if [ ! -d "$ZSH_DIR" ]; then
         echo "✨ Installing Oh My Zsh..."
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     else
-        echo "Oh My Zsh already installed, skipping."
+        echo "✨ Oh My Zsh is installed. Checking for updates..."
+        "$ZSH_DIR/tools/upgrade.sh"
     fi
     
     echo "🎨 Setting up Zsh themes..."
     cp ./themes/calm.zsh-theme ~/.oh-my-zsh/themes/calm.zsh-theme
     cp ./themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes/tokyo-night.zsh-theme
     
-    echo "🧩 Installing Zsh plugins..."
+    echo "🧩 Installing/updating Zsh plugins..."
     local ZSH_CUSTOM_PLUGINS="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions" ]; then
-        git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions"
+    local ZSH_AUTOSUGGESTIONS_DIR="$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions"
+    local ZSH_SYNTAX_HIGHLIGHTING_DIR="$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting"
+
+    if [ ! -d "$ZSH_AUTOSUGGESTIONS_DIR" ]; then
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_AUTOSUGGESTIONS_DIR"
     else
-        echo "zsh-autosuggestions already installed, skipping."
+        echo "   └── Updating zsh-autosuggestions..."
+        git -C "$ZSH_AUTOSUGGESTIONS_DIR" pull
     fi
 
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" ]; then
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting"
+    if [ ! -d "$ZSH_SYNTAX_HIGHLIGHTING_DIR" ]; then
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_SYNTAX_HIGHLIGHTING_DIR"
     else
-        echo "zsh-syntax-highlighting already installed, skipping."
+        echo "   └── Updating zsh-syntax-highlighting..."
+        git -C "$ZSH_SYNTAX_HIGHLIGHTING_DIR" pull
     fi
 }
 
@@ -77,7 +85,7 @@ install_azure_cli() {
         echo "☁️  Installing Azure CLI..."
         curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     else
-        echo "Azure CLI already installed, skipping."
+        echo "Azure CLI already installed, skipping. It will be updated by 'apt upgrade'."
     fi
 }
 
@@ -121,104 +129,71 @@ install_dotnet() {
                 ;;
         esac
     else
-        echo "Dotnet SDK already installed, skipping."
+        source /etc/os-release
+        if [[ "$ID" == "debian" ]]; then
+            echo "📦 .NET is installed. Checking for updates on Debian..."
+            curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
+            chmod +x ./dotnet-install.sh
+            sudo ./dotnet-install.sh --channel 9.0 --install-dir /usr/share/dotnet
+            sudo ln -sf /usr/share/dotnet/dotnet /usr/local/bin/dotnet
+            rm ./dotnet-install.sh
+        else
+            echo "Dotnet SDK already installed, skipping. It will be updated by 'apt upgrade'."
+        fi
     fi
 }
 
 install_powershell() {
-    if ! is_installed pwsh; then
-        echo "📦 Installing PowerShell..."
-        source /etc/os-release
-
-        case "$ID" in
-            ubuntu)
-                echo "Configuring Microsoft package repository for $PRETTY_NAME to install PowerShell."
-                wget -q "https://packages.microsoft.com/config/${ID}/${VERSION_ID}/packages-microsoft-prod.deb" -O packages-microsoft-prod.deb
-                sudo dpkg -i packages-microsoft-prod.deb
-                rm packages-microsoft-prod.deb
-                sudo apt update
-                sudo apt install -y powershell
-                ;;
-            debian)
-                echo "Installing PowerShell LTS on Debian by directly downloading the .deb package for your architecture."
-                local PWSH_ARCH
-                case "$(uname -m)" in
-                    "x86_64") PWSH_ARCH="amd64" ;;
-                    "aarch64" | "arm64") PWSH_ARCH="arm64" ;;
-                    *)
-                        echo "Warning: Unsupported architecture for PowerShell ($(uname -m)). Skipping PowerShell installation."
-                        return
-                        ;;
-                esac
-
-                # Per https://learn.microsoft.com/en-us/powershell/scripting/install/install-debian?view=powershell-7.5
-                # We will download the LTS package directly from GitHub releases.
-                echo "Finding latest PowerShell LTS release..."
-                
-                local LTS_TAG_WITH_V
-                # The aka.ms link redirects to the latest LTS release page.
-                # We use -Ls -o /dev/null -w "%{url_effective}" to get the final URL after all redirects.
-                local LTS_LOCATION
-                LTS_LOCATION=$(curl -Ls -o /dev/null -w "%{url_effective}" "https://aka.ms/powershell-release?tag=lts")
-                LTS_TAG_WITH_V=$(basename "$LTS_LOCATION" | tr -d '\r')
-
-                if [[ -z "$LTS_TAG_WITH_V" || "$LTS_TAG_WITH_V" == "lts" ]]; then
-                    echo "Error: Could not determine the latest LTS version of PowerShell."
-                    echo "Please try installing manually from https://github.com/PowerShell/PowerShell/releases"
-                    return
-                fi
-                
-                echo "Finding download URL from GitHub API for tag ${LTS_TAG_WITH_V}..."
-                local RELEASE_API_URL="https://api.github.com/repos/PowerShell/PowerShell/releases/tags/${LTS_TAG_WITH_V}"
-                
-                local DEB_URL
-                # Query the API, find the line with the browser_download_url for the correct deb package, and extract the URL.
-                DEB_URL=$(curl -s "$RELEASE_API_URL" | grep "browser_download_url" | grep "linux-${PWSH_ARCH}\\.deb\"" | cut -d '"' -f 4 | head -n 1)
-
-                if [[ -z "$DEB_URL" ]]; then
-                    echo "Error: Could not find a PowerShell .deb package for architecture '${PWSH_ARCH}' in release ${LTS_TAG_WITH_V}."
-                    echo "Please try installing manually from https://github.com/PowerShell/PowerShell/releases"
-                    return
-                fi
-                
-                echo "Downloading PowerShell LTS from $DEB_URL"
-                wget "$DEB_URL" -O powershell.deb
-                sudo dpkg -i powershell.deb
-                echo "Installing dependencies..."
-                sudo apt-get install -f -y
-                rm powershell.deb
-                ;;
-            *)
-                echo "Warning: Unsupported distribution '$ID'. This script only supports Ubuntu and Debian for PowerShell installation."
-                echo "Skipping PowerShell installation."
-                ;;
-        esac
+    if ! is_installed pwsh && ! [ -f "$HOME/.dotnet/tools/pwsh" ]; then
+        echo "📦 Installing PowerShell as a .NET global tool..."
+        # The --add-source is added to ensure we can find the package, even on preview SDKs.
+        dotnet tool install --global PowerShell --add-source "https://api.nuget.org/v3/index.json"
     else
-        echo "PowerShell already installed, skipping."
+        echo "📦 PowerShell is installed. Checking for updates..."
+        dotnet tool update --global PowerShell
     fi
+    echo "✅ PowerShell is installed and up-to-date."
+    echo "   └── Please ensure \"\$HOME/.dotnet/tools\" is in your PATH to use it."
+}
+
+trust_dotnet_dev_certs() {
+    echo "🔐 Trusting .NET local development certificate..."
+    dotnet dev-certs https --trust
+    echo "   └── If prompted, please provide your password to trust the certificate."
 }
 
 install_terraform() {
-    if ! is_installed terraform; then
-        echo "📦 Installing Terraform..."
-        local TER_ARCH
-        case "$(uname -m)" in
-            "x86_64") TER_ARCH="amd64" ;;
-            "aarch64" | "arm64") TER_ARCH="arm64" ;;
-            *)
-                echo "Warning: Unsupported architecture for Terraform ($(uname -m)). Skipping Terraform installation."
-                return
-                ;;
-        esac
-        
-        local TER_VER
-        TER_VER=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-        wget "https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_${TER_ARCH}.zip" -O ~/terraform.zip
+    echo "📦 Ensuring Terraform is up to date..."
+    local TER_ARCH
+    case "$(uname -m)" in
+        "x86_64") TER_ARCH="amd64" ;;
+        "aarch64" | "arm64") TER_ARCH="arm64" ;;
+        *)
+            echo "Warning: Unsupported architecture for Terraform ($(uname -m)). Skipping Terraform installation."
+            return
+            ;;
+    esac
+    
+    local LATEST_VER
+    LATEST_VER=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+    
+    local INSTALLED_VER="0"
+    if is_installed terraform; then
+        INSTALLED_VER=$(terraform version | head -n 1 | awk '{print $2}' | tr -d 'v')
+    fi
+
+    if [[ "$LATEST_VER" != "$INSTALLED_VER" ]]; then
+        if [[ "$INSTALLED_VER" != "0" ]]; then
+            echo "   └── New version of Terraform found (v${LATEST_VER}). Currently on v${INSTALLED_VER}. Updating..."
+        else
+            echo "   └── Installing Terraform v${LATEST_VER}..."
+        fi
+        wget "https://releases.hashicorp.com/terraform/${LATEST_VER}/terraform_${LATEST_VER}_linux_${TER_ARCH}.zip" -O ~/terraform.zip
         unzip -o ~/terraform.zip -d ~/
         sudo mv ~/terraform /usr/local/bin/
         rm ~/terraform.zip
     else
-        echo "Terraform already installed, skipping."
+        echo "   └── Terraform is already up to date (v${INSTALLED_VER})."
     fi
 }
 
@@ -245,17 +220,18 @@ install_nvm_and_node() {
         git checkout "$(git describe --abbrev=0 --tags --match "v[0-9]*" "$(git rev-list --tags --max-count=1)")"
         cd - > /dev/null
     else
-        echo "NVM already installed, skipping."
+        echo "📦 NVM is installed. Fetching latest changes..."
+        (cd "$NVM_DIR" && git fetch --tags origin && git checkout "$(git describe --abbrev=0 --tags --match "v[0-9]*" "$(git rev-list --tags --max-count=1)")")
     fi
 
     # Source nvm script to use it in the current shell
     # shellcheck source=/dev/null
     . "$NVM_DIR/nvm.sh"
 
-    echo "📦 Installing Node.js LTS..."
+    echo "📦 Ensuring Node.js LTS is up to date..."
     nvm install --lts
 
-    echo "📦 Installing latest npm..."
+    echo "📦 Ensuring npm is up to date..."
     npm install -g npm
 }
 
@@ -271,6 +247,7 @@ main() {
     install_azure_cli
     install_dotnet
     install_powershell
+    trust_dotnet_dev_certs
     install_terraform
     
     echo "🧹 Cleaning up unused packages..."
