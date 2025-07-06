@@ -12,7 +12,6 @@ is_installed() {
 
 system_setup() {
     echo "🔧 Granting execute permissions..."
-    chmod +x ./scripts/backup-config.sh
     chmod +x ./scripts/setup-config.sh
 
     echo "🔄 Updating and upgrading system packages..."
@@ -208,6 +207,9 @@ install_nvm_and_node() {
     nvm install --lts
 
     echo "📦 Ensuring npm is up to date..."
+    npm install -g npm
+
+    echo "📦 Installing Gemini CLI..."
     npm install -g npm
 }
 
