@@ -84,8 +84,8 @@ export FLYCTL_INSTALL="/home/kevin/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 alias fly="flyctl"
 
-# gemini cli
-export GEMINI_API_KEY="needs-manual-setup"
+# gemini cli + code assist
+export GOOGLE_CLOUD_PROJECT="gen-lang-client-0658560070"
 
 # TODO - MULTIPLE FLAVORS OF JAVA
 # export JAVA_19_HOME=/usr/lib/jvm/java-19-openjdk-amd64/bin/
