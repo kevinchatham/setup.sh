@@ -209,8 +209,8 @@ install_nvm_and_node() {
     echo "📦 Ensuring npm is up to date..."
     npm install -g npm
 
-    echo "📦 Installing Gemini CLI..."
-    npm install -g npm
+    echo "📦 Installing OpenCode..."
+    npm install -g opencode-ai@latest
 }
 
 main() {
