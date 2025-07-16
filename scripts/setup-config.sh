@@ -7,13 +7,17 @@ cp  ../profiles/.bashrc ~/
 cp  ../profiles/.zshrc ~/
 
 echo "    ➡️  Setting up themes..."
-cp  ../themes/tokyo-night.zsh-theme ~/.oh-my-zsh/themes
-cp  ../themes/calm.zsh-theme ~/.oh-my-zsh/themes
+cp  ../themes/oh-my-zsh/tokyo-night.zsh-theme ~/.oh-my-zsh/themes
+cp  ../themes/oh-my-zsh/calm.zsh-theme ~/.oh-my-zsh/themes
 mkdir -p ~/.config
 cp  ../themes/starship.toml ~/.config
 
 echo "    ➡️  Setting up nvim config..."
 mkdir -p ~/.config/nvim
 cp ../nvim/*.lua ~/.config/nvim/
+
+echo "    ➡️  Setting up opencode config..."
+mkdir -p ~/.config/opencode
+cp -r ../opencode/* ~/.config/opencode
 
 echo "✅ Custom configurations applied."

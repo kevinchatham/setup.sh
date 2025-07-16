@@ -3,8 +3,10 @@
         "flyctl",
         "Neovim",
         "nvim",
+        "opencode",
         "Pubkey",
         "USERPROFILE",
-        "wslconfig"
+        "wslconfig",
+        "xclip"
     ]
 }

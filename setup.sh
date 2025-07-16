@@ -26,7 +26,7 @@ system_setup() {
 
 install_core_dependencies() {
     echo "📦 Installing core dependencies..."
-    sudo apt install -y git curl zsh neofetch htop sqlite3 wget unzip apt-transport-https software-properties-common
+    sudo apt install -y git curl zsh neofetch htop sqlite3 wget unzip apt-transport-https software-properties-common xclip
 }
 
 configure_git() {
