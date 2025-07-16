@@ -37,6 +37,9 @@ alias vi="nvim"
 alias vim="nvim"
 alias nvim-config="nvim ~/.config/nvim/init.lua"
 
+# opencode
+alias opencode-config="code ~/.config/opencode/opencode.json"
+
 # zsh
 alias zsh-config="nvim ~/.zshrc"
 alias zsh-spectrum="spectrum_ls"
